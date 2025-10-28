@@ -1,6 +1,6 @@
 package se.sprinto.hakan.adventuregame.model.rooms;
 
-import se.sprinto.hakan.adventuregame.model.Player;
+import se.sprinto.hakan.adventuregame.model.characters.Player;
 import se.sprinto.hakan.adventuregame.view.UI;
 
 public class ForestRoom implements Room {

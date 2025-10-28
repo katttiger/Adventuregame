@@ -1,4 +1,4 @@
-package se.sprinto.hakan.adventuregame.model.rooms.mockclasses;
+package se.sprinto.hakan.adventuregame;
 
 import se.sprinto.hakan.adventuregame.view.UI;
 

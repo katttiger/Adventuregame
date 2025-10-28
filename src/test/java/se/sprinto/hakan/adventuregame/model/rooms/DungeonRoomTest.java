@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import se.sprinto.hakan.adventuregame.model.Player;
-import se.sprinto.hakan.adventuregame.model.rooms.mockclasses.FakeUI;
+import se.sprinto.hakan.adventuregame.FakeUI;
+import se.sprinto.hakan.adventuregame.model.characters.Player;
 
 class DungeonRoomTest {
 

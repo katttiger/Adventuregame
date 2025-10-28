@@ -3,14 +3,13 @@ package se.sprinto.hakan.adventuregame.service;
 import se.sprinto.hakan.adventuregame.dao.AppInfo;
 import se.sprinto.hakan.adventuregame.dao.FileStatisticsDao;
 import se.sprinto.hakan.adventuregame.dao.StatisticsDao;
-import se.sprinto.hakan.adventuregame.model.Player;
 import se.sprinto.hakan.adventuregame.model.Statistics;
+import se.sprinto.hakan.adventuregame.model.characters.Player;
 import se.sprinto.hakan.adventuregame.view.UI;
 
 public class GameService {
 
     private static StatisticsDao dao = new FileStatisticsDao();
-
 
     public static void printGreeting(UI ui) {
         ui.showMessage("Välkommen till Äventyrsspelet!");
@@ -27,14 +26,15 @@ public class GameService {
         return player;
     }
 
-    public static void printScore(Player p, UI ui) {
+    public static void saveScore(Player p) {
         dao.save(new Statistics(p.getName(), p.getScore()));
+    }
+
+    public static void printScore(UI ui) {
         StatisticsService service = new StatisticsService(dao);
         ui.showMessage("\n--- Topplista ---");
         for (Statistics s : service.getSortedStatistics()) {
             ui.showMessage(s.getPlayerName() + " - " + s.getScore() + " poäng");
-
         }
-
     }
 }

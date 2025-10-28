@@ -1,4 +1,4 @@
-package se.sprinto.hakan.adventuregame.model;
+package se.sprinto.hakan.adventuregame.model.characters;
 
 public abstract class AbstractCharacter {
     private String name;
@@ -13,7 +13,7 @@ public abstract class AbstractCharacter {
         this.strength = strength;
     }
 
-    
+
     public abstract void attack(AbstractCharacter target);
 
     public String getName() {

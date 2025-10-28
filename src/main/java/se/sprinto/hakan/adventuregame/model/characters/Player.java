@@ -1,4 +1,4 @@
-package se.sprinto.hakan.adventuregame.model;
+package se.sprinto.hakan.adventuregame.model.characters;
 
 public class Player extends AbstractCharacter {
     private boolean foundKey;
