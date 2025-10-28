@@ -1,15 +1,16 @@
-package se.sprinto.hakan.adventuregame.model;
+package se.sprinto.hakan.adventuregame.model.rooms;
 
+import se.sprinto.hakan.adventuregame.model.Player;
 import se.sprinto.hakan.adventuregame.view.UI;
 
 public class StartRoom implements Room {
-
     @Override
     public void enterRoom(Player player, UI ui) {
         ui.showMessage("Du befinner dig i start-rummet. Du ser tre dörrar framför dig.");
         boolean exit = false;
         while (!exit) {
-            String choice = ui.getInput("Vilken dörr vill du ta? (1=Skog, 2=Fängelse, 3=Skattkammare, q=avsluta)");
+            String choice = ui.getInput("Vilken dörr vill du ta? " +
+                    "(1=Skog, 2=Fängelse, 3=Skattkammare, q=avsluta)");
             switch (choice) {
                 case "1":
                     if (!player.hasFoundKey()) {
@@ -17,7 +18,6 @@ public class StartRoom implements Room {
                     } else {
                         System.out.println("Du har redan hittat och plockat upp nyckeln.");
                     }
-
                     break;
                 case "2":
                     new DungeonRoom().enterRoom(player, ui);
@@ -39,7 +39,7 @@ public class StartRoom implements Room {
                 ui.showMessage("Grattis! Du har klarat spelet!");
                 exit = true;
             } else if (player.getHealth() <= 0) {
-                ui.showMessage(("Din hälsa är kritisk, du vacklar till och dör!"));
+                ui.showMessage(("Din hälsa är kritisk. Du vacklar till och dör!"));
                 exit = true;
             }
         }
