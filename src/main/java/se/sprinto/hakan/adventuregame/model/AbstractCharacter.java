@@ -13,10 +13,7 @@ public abstract class AbstractCharacter {
         this.strength = strength;
     }
 
-    public AbstractCharacter() {
-
-    }
-
+    
     public abstract void attack(AbstractCharacter target);
 
     public String getName() {

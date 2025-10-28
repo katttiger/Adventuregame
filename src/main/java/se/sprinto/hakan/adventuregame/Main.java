@@ -2,7 +2,7 @@ package se.sprinto.hakan.adventuregame;
 
 import se.sprinto.hakan.adventuregame.model.Player;
 import se.sprinto.hakan.adventuregame.model.rooms.StartRoom;
-import se.sprinto.hakan.adventuregame.service.SetupgameService;
+import se.sprinto.hakan.adventuregame.service.GameService;
 import se.sprinto.hakan.adventuregame.view.ScannerUI;
 import se.sprinto.hakan.adventuregame.view.UI;
 
@@ -12,9 +12,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         UI ui = new ScannerUI();
-        SetupgameService.printGreeting(ui);
-        Player player = SetupgameService.createPlayer(ui);
+        GameService.printGreeting(ui);
+        Player player = GameService.createPlayer(ui);
         new StartRoom().enterRoom(player, ui);
+
 //
 //        StatisticsDao dao = new FileStatisticsDao();
 //        dao.save(new Statistics(player.getName(), player.getScore()));

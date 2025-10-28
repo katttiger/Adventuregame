@@ -1,0 +1,32 @@
+package se.sprinto.hakan.adventuregame.model;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class PlayerTest {
+
+    Player player;
+
+    Enemy enemy;
+
+    @BeforeEach
+    void setUp() {
+        this.player = new Player.Builder()
+                .name("TestPlayer")
+                .health(100)
+                .score(0)
+                .strength(10)
+                .build();
+        this.enemy = new Enemy("Vätte", 20, 0, 5);
+
+
+    }
+
+    @Test
+    void attack() {
+        int enemyInitialHealth = enemy.getHealth();
+        player.attack(enemy);
+        Assertions.assertTrue(enemy.getHealth() == (enemyInitialHealth - player.getStrength()));
+    }
+}
