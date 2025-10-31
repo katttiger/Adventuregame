@@ -3,32 +3,29 @@ package se.sprinto.hakan.adventuregame;
 import se.sprinto.hakan.adventuregame.dao.StatisticsDao;
 import se.sprinto.hakan.adventuregame.model.Statistics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FakeFileStatisticDao implements StatisticsDao {
 
-    Statistics fakeStat;
+    ArrayList<Statistics> testStatistics = new ArrayList<>();
 
-    List<Statistics> statistics;
-
-    public void setStatistics() {
-        this.fakeStat = new Statistics("Player1", 22);
-        this.statistics.add(fakeStat);
-        this.fakeStat = new Statistics("Player2", 16);
-        this.statistics.add(fakeStat);
-        this.fakeStat = new Statistics("Player3", 99);
-        this.statistics.add(fakeStat);
-        this.fakeStat = new Statistics("Player4", 2);
-        this.statistics.add(fakeStat);
+    public FakeFileStatisticDao() {
     }
 
     @Override
     public void save(Statistics stat) {
-        statistics.add(stat);
+        testStatistics.add(stat);
     }
 
     @Override
     public List<Statistics> loadAll() {
-        return List.of();
+        Statistics fakeStat = new Statistics("Player11", 4);
+        testStatistics.add(fakeStat);
+        fakeStat = new Statistics("Player22", 10);
+        testStatistics.add(fakeStat);
+        fakeStat = new Statistics("Player66", 2);
+        testStatistics.add(fakeStat);
+        return testStatistics;
     }
 }
