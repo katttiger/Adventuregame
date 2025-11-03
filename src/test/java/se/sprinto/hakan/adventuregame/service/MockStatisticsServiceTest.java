@@ -21,14 +21,18 @@ class MockStatisticsServiceTest {
 
     @Mock
     private FileStatisticsDao fileStatisticsDao;
-
     @InjectMocks
     private StatisticsService statisticsService;
+
     private List<Statistics> testStatistics;
+
+    private List<Statistics> sortedStatistics;
 
     @BeforeEach
     void setUp() {
         testStatistics = new ArrayList<>();
+        statisticsService = new StatisticsService(fileStatisticsDao);
+
         //Add the below to list testStatistics
         Statistics fakeStat0 = new Statistics("Player11", 4);
         Statistics fakeStat1 = new Statistics("Player22", 10);
@@ -37,6 +41,12 @@ class MockStatisticsServiceTest {
         testStatistics.add(fakeStat0);
         testStatistics.add(fakeStat1);
         testStatistics.add(fakestat2);
+
+        sortedStatistics = new ArrayList<>();
+        sortedStatistics.add(fakestat2);
+        sortedStatistics.add(fakeStat1);
+        sortedStatistics.add(fakeStat0);
+
     }
 
     @Test
@@ -50,7 +60,7 @@ class MockStatisticsServiceTest {
             Assertions.fail();
         }
         for (int i = 0; i < scoreTestList.size(); i++) {
-            assert scoreTestList.get(i).getScore() == testStatistics.get(i).getScore() && scoreTestList.get(i).getPlayerName() == testStatistics.get(i).getPlayerName();
+            assert scoreTestList.get(i).getScore() == testStatistics.get(i).getScore() && scoreTestList.get(i).getPlayerName().equals(testStatistics.get(i).getPlayerName());
         }
 
 
@@ -59,6 +69,16 @@ class MockStatisticsServiceTest {
     @Test
     @DisplayName("Method getSortedStatistics returns sorted list.")
     void getSortedStatistics() {
+        Mockito.when(statisticsService.getSortedStatistics()).thenReturn(sortedStatistics);
+
+        if (sortedStatistics.isEmpty()) {
+            Assertions.fail();
+        }
+        List<Statistics> mockStats = statisticsService.getSortedStatistics();
+
+        for (int i = 0; i < mockStats.size(); i++) {
+            assert mockStats.get(i).getScore() == sortedStatistics.get(i).getScore() && mockStats.get(i).getPlayerName().equals(sortedStatistics.get(i).getPlayerName());
+        }
 
 
     }
