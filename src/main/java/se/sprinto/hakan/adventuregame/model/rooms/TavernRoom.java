@@ -8,15 +8,26 @@ public class TavernRoom implements Room {
     @Override
     public void enterRoom(Player player, UI ui) {
         ui.showMessage("""
-                You enter a Tavern. 
-                An old man greets you and asks if you want to have something to eat.""");
+                Du går in i ett värdshus.
+                Värdshusvärden hälsar dig och frågar om du vill ha någonting att äta.""");
 
         Tavernowner tavernowner = new Tavernowner("Owner", 10, 0, 10);
 
         switch (answerServingRequest(ui)) {
-            case "1" -> tavernowner.servePlayerGoodMeal(player);
-            case "2" -> tavernowner.servePlayerLessGoodMeal(player);
-            case "3" -> ui.showMessage("Stick härifrån.");
+            case "1" -> {
+                ui.showMessage(
+                        "Värdshusvärden serverar dig en väldigt god måltid. Du får 10 HP"
+                );
+                tavernowner.servePlayerGoodMeal(player);
+            }
+            case "2" -> {
+                ui.showMessage(
+                        "Maten du får är inte god. Du förlorar 10 HP"
+                );
+                tavernowner.servePlayerLessGoodMeal(player);
+            }
+            case "3" -> ui.showMessage("Värdshusvärden säger \"Stick härifrån\"." +
+                    "Du lyder.");
             default -> ui.showMessage("You turn at the door.");
         }
     }

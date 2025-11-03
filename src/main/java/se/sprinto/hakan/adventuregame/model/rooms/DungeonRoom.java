@@ -12,6 +12,10 @@ public class DungeonRoom implements Room {
         Enemy goblin = new Enemy("Vätte", 20, 0, 5);
 
         while (player.isAlive() && goblin.isAlive()) {
+            ui.showMessage("Nuvarande värden: \n" +
+                    "Din HP: " + player.getHealth() +
+                    "\nDin STR: " + player.getStrength());
+
             String choice = ui.getInput("Vill du (a)ttackera eller (r)etirera?");
             if (choice.equalsIgnoreCase("a")) {
                 player.attack(goblin);

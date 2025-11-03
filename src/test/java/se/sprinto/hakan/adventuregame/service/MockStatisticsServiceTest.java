@@ -33,7 +33,6 @@ class MockStatisticsServiceTest {
         testStatistics = new ArrayList<>();
         statisticsService = new StatisticsService(fileStatisticsDao);
 
-        //Add the below to list testStatistics
         Statistics fakeStat0 = new Statistics("Player11", 4);
         Statistics fakeStat1 = new Statistics("Player22", 10);
         Statistics fakestat2 = new Statistics("Player66", 2);
@@ -52,8 +51,6 @@ class MockStatisticsServiceTest {
     @Test
     @DisplayName("loadAll-method returns unsorted list")
     void loadStatistics() {
-
-        //Returnera en hårdkodad lista med statistics-object (osorterad)
         Mockito.when(fileStatisticsDao.loadAll()).thenReturn(testStatistics);
         List<Statistics> scoreTestList = fileStatisticsDao.loadAll();
         if (scoreTestList.isEmpty()) {
@@ -62,8 +59,6 @@ class MockStatisticsServiceTest {
         for (int i = 0; i < scoreTestList.size(); i++) {
             assert scoreTestList.get(i).getScore() == testStatistics.get(i).getScore() && scoreTestList.get(i).getPlayerName().equals(testStatistics.get(i).getPlayerName());
         }
-
-
     }
 
     @Test

@@ -8,7 +8,6 @@ import se.sprinto.hakan.adventuregame.model.characters.Player;
 import se.sprinto.hakan.adventuregame.view.UI;
 
 public class GameService {
-
     private static StatisticsDao dao = new FileStatisticsDao();
 
     public static void printGreeting(UI ui) {

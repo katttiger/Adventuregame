@@ -9,6 +9,6 @@ public class ForgeRoom implements Room {
     public void enterRoom(Player player, UI ui) {
         Smith smith = new Smith("Smith", 10, 0, 10);
         smith.increasePlayerStrength(player);
-        ui.showMessage("The smith forges you a better weapon. Your strengths increases by 10.");
+        ui.showMessage("Smeden ger dig ett bättre vapen. Din styrka ökar med 10 STR.");
     }
 }

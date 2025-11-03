@@ -10,22 +10,44 @@ public class WitchCottage implements Room {
 
         Witch witch = new Witch("Witch", 10, 0, 10);
         ui.showMessage("""
-                You've entered a Witch Cottage.
-                The witch looks at you with cunning eyes.
+                Du har hittat en häxas stuga och stiger in.
+                I stugan står en häxa vid sin kittel och tittar på dig.
                 """);
 
         switch (witchDecision(player, ui)) {
-            case "1" -> witch.healPlayerNormal(player);
-            case "2" -> witch.healPlayerBoost(player);
-            case "3" -> witch.attack(player);
+            case "1" -> {
+                ui.showMessage("""
+                        Häxan ser ditt mod och belönar dig.
+                        Du återfår 10 HP.
+                        """);
+                witch.healPlayerNormal(player);
+            }
+            case "2" -> {
+                ui.showMessage("""
+                        Häxan uppskattar din respekt och belönar dig.
+                        Du återfår 20 HP.
+                        """);
+                witch.healPlayerBoost(player);
+            }
+            case "3" -> {
+                ui.showMessage("""
+                        Du mår illa och hör häxan skratta.
+                        Du förlorar 10 HP.""");
+                witch.attack(player);
+            }
+            default -> {
+                ui.showMessage("""
+                        Du vänder i dörren.
+                        """);
+            }
         }
     }
 
     public String witchDecision(Player player, UI ui) {
         return ui.getInput("""
-                [1] Ask for help
-                [2] Remain silent 
-                [3] Wrong door
+                [1] Fråga om hjälp
+                [2] Var tyst
+                [3] Ursäkta. Fel dörr
                 """);
     }
 }

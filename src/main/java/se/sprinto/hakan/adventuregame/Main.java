@@ -6,11 +6,9 @@ import se.sprinto.hakan.adventuregame.service.GameService;
 import se.sprinto.hakan.adventuregame.view.ScannerUI;
 import se.sprinto.hakan.adventuregame.view.UI;
 
-import java.io.IOException;
-
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         UI ui = new ScannerUI();
         GameService.printGreeting(ui);
         Player player = GameService.createPlayer(ui);
