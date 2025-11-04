@@ -10,5 +10,6 @@ public class ForgeRoom implements Room {
         Smith smith = new Smith("Smith", 10, 0, 10);
         smith.increasePlayerStrength(player);
         ui.showMessage("Smeden ger dig ett bättre vapen. Din styrka ökar med 10 STR.");
+        ui.returnToMenuPrompt();
     }
 }

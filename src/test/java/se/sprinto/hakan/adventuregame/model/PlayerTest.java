@@ -14,7 +14,7 @@ class PlayerTest {
 
     @BeforeEach
     void setUp() {
-        this.player = new Player.Builder()
+        this.player = new Player.PlayerBuilder()
                 .name("TestPlayer")
                 .health(100)
                 .score(0)

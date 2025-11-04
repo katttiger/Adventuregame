@@ -11,7 +11,7 @@ class WitchTest {
 
     @BeforeEach
     void setUp() {
-        player = new Player.Builder().name("Player1").strength(10).health(100).score(0).build();
+        player = new Player.PlayerBuilder().name("Player1").strength(10).health(100).score(0).build();
         witch = new Witch("Witch", 25, 0, 10);
     }
 

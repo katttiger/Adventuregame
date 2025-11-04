@@ -16,7 +16,7 @@ class TavernRoomTest {
 
     @BeforeEach
     void setUp() {
-        player = new Player.Builder().name("player").score(0).health(100).strength(10).build();
+        player = new Player.PlayerBuilder().name("player").score(0).health(100).strength(10).build();
         fakeUI = new FakeUI();
         tavernRoom = new TavernRoom();
 

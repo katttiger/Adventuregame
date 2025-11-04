@@ -22,7 +22,9 @@ public class FileStatisticsDao implements StatisticsDao {
     @Override
     public List<Statistics> loadAll() {
         List<Statistics> stats = new ArrayList<>();
-        if (!file.exists()) return stats;
+        if (!file.exists()) {
+            return stats;
+        }
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
@@ -33,6 +35,7 @@ public class FileStatisticsDao implements StatisticsDao {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
         return stats;
     }
 }

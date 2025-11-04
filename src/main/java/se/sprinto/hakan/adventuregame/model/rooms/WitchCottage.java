@@ -11,39 +11,40 @@ public class WitchCottage implements Room {
         Witch witch = new Witch("Witch", 10, 0, 10);
         ui.showMessage("""
                 Du har hittat en häxas stuga och stiger in.
-                I stugan står en häxa vid sin kittel och tittar på dig.
+                I stugan står en häxa vid sin kittel.
                 """);
 
-        switch (witchDecision(player, ui)) {
+        switch (witchDecision(ui)) {
             case "1" -> {
                 ui.showMessage("""
-                        Häxan ser ditt mod och belönar dig.
+                        Häxan hör dig och tittar upp. Hon ser ditt mod och belönar dig..
                         Du återfår 10 HP.
                         """);
                 witch.healPlayerNormal(player);
             }
             case "2" -> {
                 ui.showMessage("""
-                        Häxan uppskattar din respekt och belönar dig.
+                        Häxan känner din närvaro och tittar upp. Din tystnad tolkar hon som vördnad och du belönas.
                         Du återfår 20 HP.
                         """);
                 witch.healPlayerBoost(player);
             }
             case "3" -> {
                 ui.showMessage("""
-                        Du mår illa och hör häxan skratta.
-                        Du förlorar 10 HP.""");
+                        Häxan hör dig och skrattar.
+                        Du mår illa och förlorar 10 HP.""");
                 witch.attack(player);
             }
             default -> {
                 ui.showMessage("""
-                        Du vänder i dörren.
+                        Du vänder i dörren och hoppas att häxan inte sett dig.
                         """);
             }
         }
+        ui.returnToMenuPrompt();
     }
 
-    public String witchDecision(Player player, UI ui) {
+    public String witchDecision(UI ui) {
         return ui.getInput("""
                 [1] Fråga om hjälp
                 [2] Var tyst

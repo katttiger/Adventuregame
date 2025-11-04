@@ -28,8 +28,9 @@ public class TavernRoom implements Room {
             }
             case "3" -> ui.showMessage("Värdshusvärden säger \"Stick härifrån\"." +
                     "Du lyder.");
-            default -> ui.showMessage("You turn at the door.");
+            default -> ui.showMessage("Du vänder i dörren.");
         }
+        ui.returnToMenuPrompt();
     }
 
     public String answerServingRequest(UI ui) {

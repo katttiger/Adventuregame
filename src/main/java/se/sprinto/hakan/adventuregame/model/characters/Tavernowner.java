@@ -16,6 +16,5 @@ public class Tavernowner extends AbstractCharacter {
 
     @Override
     public void attack(AbstractCharacter target) {
-
     }
 }

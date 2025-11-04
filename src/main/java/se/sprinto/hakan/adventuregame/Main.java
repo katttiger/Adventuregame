@@ -13,8 +13,7 @@ public class Main {
         GameService.printGreeting(ui);
         Player player = GameService.createPlayer(ui);
         new StartRoom().enterRoom(player, ui);
-        GameService.saveScore(player);
-        GameService.printScore(ui);
+        GameService.closeApplication(player, ui);
     }
 }
 

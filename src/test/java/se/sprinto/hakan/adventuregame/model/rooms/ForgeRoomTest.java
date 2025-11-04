@@ -14,7 +14,7 @@ class ForgeRoomTest {
 
     @BeforeEach
     void setUp() {
-        player = new Player.Builder().name("Player").score(0).health(100).strength(10).build();
+        player = new Player.PlayerBuilder().name("Player").score(0).health(100).strength(10).build();
         smith = new Smith("Smith", 15, 0, 80);
     }
 

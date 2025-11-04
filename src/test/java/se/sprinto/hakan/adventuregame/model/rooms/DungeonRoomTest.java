@@ -17,7 +17,7 @@ class DungeonRoomTest {
     @BeforeEach
     void setUp() {
         this.fakeUI = new FakeUI();
-        this.player = new Player.Builder()
+        this.player = new Player.PlayerBuilder()
                 .name("TestPlayer")
                 .health(100)
                 .score(0)

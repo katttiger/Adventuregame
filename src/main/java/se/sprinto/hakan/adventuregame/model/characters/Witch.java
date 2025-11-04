@@ -15,7 +15,6 @@ public class Witch extends AbstractCharacter {
 
     @Override
     public void attack(AbstractCharacter target) {
-
         target.setHealth(target.getHealth() - 10);
     }
 }
