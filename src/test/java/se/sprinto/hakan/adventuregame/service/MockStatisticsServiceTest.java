@@ -19,33 +19,26 @@ import java.util.List;
 @ExtendWith(MockitoExtension.class)
 class MockStatisticsServiceTest {
 
-    @Mock
+    @Mock //parameter till ctor
     private FileStatisticsDao fileStatisticsDao;
-    @InjectMocks
+    @InjectMocks // det vi vill att MOCKITO ska instansiera och testa
     private StatisticsService statisticsService;
 
     private List<Statistics> testStatistics;
 
-    private List<Statistics> sortedStatistics;
+    private int maxScore = 10;
 
     @BeforeEach
     void setUp() {
         testStatistics = new ArrayList<>();
-        statisticsService = new StatisticsService(fileStatisticsDao);
 
         Statistics fakeStat0 = new Statistics("Player11", 4);
-        Statistics fakeStat1 = new Statistics("Player22", 10);
+        Statistics fakeStat1 = new Statistics("Player22", maxScore);
         Statistics fakestat2 = new Statistics("Player66", 2);
 
         testStatistics.add(fakeStat0);
         testStatistics.add(fakeStat1);
         testStatistics.add(fakestat2);
-
-        sortedStatistics = new ArrayList<>();
-        sortedStatistics.add(fakestat2);
-        sortedStatistics.add(fakeStat1);
-        sortedStatistics.add(fakeStat0);
-
     }
 
     @Test
@@ -53,28 +46,16 @@ class MockStatisticsServiceTest {
     void loadStatistics() {
         Mockito.when(fileStatisticsDao.loadAll()).thenReturn(testStatistics);
         List<Statistics> scoreTestList = fileStatisticsDao.loadAll();
-        if (scoreTestList.isEmpty()) {
-            Assertions.fail();
-        }
         for (int i = 0; i < scoreTestList.size(); i++) {
-            assert scoreTestList.get(i).getScore() == testStatistics.get(i).getScore() && scoreTestList.get(i).getPlayerName().equals(testStatistics.get(i).getPlayerName());
+            Assertions.assertEquals(testStatistics.get(i).getScore(), scoreTestList.get(i).getScore());
         }
     }
 
     @Test
-    @DisplayName("Method getSortedStatistics returns sorted list.")
+    @DisplayName("Method getSortedStatistics returns unsorted list.")
     void getSortedStatistics() {
-        Mockito.when(statisticsService.getSortedStatistics()).thenReturn(sortedStatistics);
-
-        if (sortedStatistics.isEmpty()) {
-            Assertions.fail();
-        }
+        Mockito.when(fileStatisticsDao.loadAll()).thenReturn(testStatistics);
         List<Statistics> mockStats = statisticsService.getSortedStatistics();
-
-        for (int i = 0; i < mockStats.size(); i++) {
-            assert mockStats.get(i).getScore() == sortedStatistics.get(i).getScore() && mockStats.get(i).getPlayerName().equals(sortedStatistics.get(i).getPlayerName());
-        }
-
-
+        Assertions.assertEquals(maxScore, mockStats.get(0).getScore());
     }
 }

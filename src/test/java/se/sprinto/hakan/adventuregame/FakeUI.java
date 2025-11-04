@@ -19,4 +19,9 @@ public class FakeUI implements UI {
     public String getInput(String prompt) {
         return input;
     }
+
+    @Override
+    public void returnToMenuPrompt() {
+
+    }
 }
