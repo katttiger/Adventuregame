@@ -23,9 +23,7 @@ class MockStatisticsServiceTest {
     private FileStatisticsDao fileStatisticsDao;
     @InjectMocks // det vi vill att MOCKITO ska instansiera och testa
     private StatisticsService statisticsService;
-
     private List<Statistics> testStatistics;
-
     private int maxScore = 10;
 
     @BeforeEach
@@ -42,7 +40,7 @@ class MockStatisticsServiceTest {
     }
 
     @Test
-    @DisplayName("loadAll-method returns unsorted list")
+    @DisplayName("Method loadAll() returns unsorted list")
     void loadStatistics() {
         Mockito.when(fileStatisticsDao.loadAll()).thenReturn(testStatistics);
         List<Statistics> scoreTestList = fileStatisticsDao.loadAll();
@@ -52,7 +50,7 @@ class MockStatisticsServiceTest {
     }
 
     @Test
-    @DisplayName("Method getSortedStatistics returns unsorted list.")
+    @DisplayName("Method getSortedStatistics() returns unsorted list.")
     void getSortedStatistics() {
         Mockito.when(fileStatisticsDao.loadAll()).thenReturn(testStatistics);
         List<Statistics> mockStats = statisticsService.getSortedStatistics();

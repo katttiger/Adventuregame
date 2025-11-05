@@ -22,9 +22,6 @@ public class AppInfo {
     public static AppInfo getAppInfo() {
         if (appInfo == null) {
             appInfo = new AppInfo();
-            //TODO Find a way to make the program work without using the setProperties method.
-            setProperties("author", "Cecilia");
-            setProperties("version", "1.1");
         }
         return appInfo;
     }
