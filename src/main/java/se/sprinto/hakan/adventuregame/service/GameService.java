@@ -12,7 +12,6 @@ public class GameService {
 
     public static void printGreeting(UI ui) {
         ui.showMessage("Välkommen till Äventyrsspelet!");
-
         AppInfo appInfo = AppInfo.getAppInfo();
         ui.showMessage("Version " + appInfo.getProperty("version")
                 + ", vidareutvecklad av " + appInfo.getProperty("author"));
@@ -20,8 +19,13 @@ public class GameService {
 
     public static Player createPlayer(UI ui) {
         String name = ui.getInput("Ange ditt namn:");
-        return new Player.PlayerBuilder()
-                .name(name).health(100).score(0).strength(10).build();
+        return new Player
+                .PlayerBuilder()
+                .name(name)
+                .health(100)
+                .score(0)
+                .strength(10)
+                .build();
     }
 
     public static void saveScore(Player p) {

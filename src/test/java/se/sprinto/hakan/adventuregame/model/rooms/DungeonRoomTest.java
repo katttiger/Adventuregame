@@ -11,7 +11,6 @@ class DungeonRoomTest {
 
     FakeUI fakeUI;
     DungeonRoom dungeonRoom;
-
     Player player;
 
     @BeforeEach

@@ -10,9 +10,7 @@ import se.sprinto.hakan.adventuregame.model.characters.Player;
 class ForestRoomTest {
 
     FakeUI fakeUI;
-
     Player player;
-
     ForestRoom forestRoom;
 
     @BeforeEach
@@ -33,6 +31,5 @@ class ForestRoomTest {
         fakeUI.setInput("ja");
         forestRoom.enterRoom(player, fakeUI);
         Assertions.assertTrue(player.hasFoundKey());
-
     }
 }

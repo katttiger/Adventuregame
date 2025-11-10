@@ -31,14 +31,14 @@ public class WitchCottage implements Room {
             }
             case "3" -> {
                 ui.showMessage("""
-                        Häxan hör dig och skrattar.
-                        Du mår illa och förlorar 10 HP.""");
-                witch.attack(player);
+                        Du vänder i dörren och hoppas att häxan inte sett dig.
+                        """);
             }
             default -> {
                 ui.showMessage("""
-                        Du vänder i dörren och hoppas att häxan inte sett dig.
-                        """);
+                        Häxan hör dig och skrattar.
+                        Du mår illa och förlorar 10 HP.""");
+                witch.attack(player);
             }
         }
         ui.returnToMenuPrompt();

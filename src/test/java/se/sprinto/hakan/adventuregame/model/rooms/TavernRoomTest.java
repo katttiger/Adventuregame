@@ -46,6 +46,15 @@ class TavernRoomTest {
         fakeUI.setInput("3");
         int initialHealth = player.getHealth();
         tavernRoom.enterRoom(player, fakeUI);
-        Assertions.assertTrue(initialHealth == player.getHealth());
+        Assertions.assertEquals(initialHealth, player.getHealth());
+    }
+
+    @Test
+    @DisplayName("Player inserts invalid input and health is not affected")
+    void enterRoom4() {
+        fakeUI.setInput("x");
+        int initialHealth = player.getHealth();
+        tavernRoom.enterRoom(player, fakeUI);
+        Assertions.assertEquals(initialHealth, player.getHealth());
     }
 }

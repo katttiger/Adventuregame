@@ -29,8 +29,4 @@ public class AppInfo {
     public String getProperty(String key) {
         return properties.getProperty(key);
     }
-
-    public static void setProperties(String key, String value) {
-        properties.setProperty(key, value);
-    }
 }

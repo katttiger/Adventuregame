@@ -26,9 +26,9 @@ public class TavernRoom implements Room {
                 );
                 tavernowner.servePlayerLessGoodMeal(player);
             }
-            case "3" -> ui.showMessage("Värdshusvärden säger \"Stick härifrån\"." +
+            case "3" -> ui.showMessage("Du vänder i dörren.");
+            default -> ui.showMessage("Värdshusvärden säger \"Stick härifrån\"." +
                     "Du lyder.");
-            default -> ui.showMessage("Du vänder i dörren.");
         }
         ui.returnToMenuPrompt();
     }

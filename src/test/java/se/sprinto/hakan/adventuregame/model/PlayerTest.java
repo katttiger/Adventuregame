@@ -9,7 +9,6 @@ import se.sprinto.hakan.adventuregame.model.characters.Player;
 class PlayerTest {
 
     Player player;
-
     Enemy enemy;
 
     @BeforeEach
@@ -29,6 +28,6 @@ class PlayerTest {
     void attack() {
         int enemyInitialHealth = enemy.getHealth();
         player.attack(enemy);
-        Assertions.assertTrue(enemy.getHealth() == (enemyInitialHealth - player.getStrength()));
+        Assertions.assertEquals(enemy.getHealth(), (enemyInitialHealth - player.getStrength()));
     }
 }

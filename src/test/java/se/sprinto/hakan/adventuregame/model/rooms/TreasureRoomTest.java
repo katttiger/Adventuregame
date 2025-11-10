@@ -26,7 +26,7 @@ class TreasureRoomTest {
 
     @Test
     @DisplayName("Player tries to open without key")
-    void enterRoom() {
+    void enterRoomWithoutKey() {
         fakeUI.setInput("ja");
         player.setFoundKey(false);
         treasureRoom.enterRoom(player, fakeUI);
@@ -35,7 +35,7 @@ class TreasureRoomTest {
 
     @Test
     @DisplayName("Player tries to open with key")
-    void enterRoom2() {
+    void enterRoomWithKey() {
         fakeUI.setInput("ja");
         player.setFoundKey(true);
         treasureRoom.enterRoom(player, fakeUI);
