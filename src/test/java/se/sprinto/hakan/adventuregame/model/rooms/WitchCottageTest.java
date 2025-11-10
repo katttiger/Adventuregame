@@ -2,6 +2,7 @@ package se.sprinto.hakan.adventuregame.model.rooms;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import se.sprinto.hakan.adventuregame.FakeUI;
 import se.sprinto.hakan.adventuregame.model.characters.Enemy;
@@ -31,6 +32,7 @@ class WitchCottageTest {
     }
 
     @Test
+    @DisplayName("Player enters room and asks for help. Health is increased.")
     void enterRoomAndAskForHelp() {
         int fakePlayerInitialHealth = fakePlayer.getHealth();
         fakeUI.setInput("1");
@@ -39,6 +41,7 @@ class WitchCottageTest {
     }
 
     @Test
+    @DisplayName("Player enters room and is silent. Health is increased.")
     void enterRoomAndBeSilent() {
         int fakePlayerInitialHealth = fakePlayer.getHealth();
         fakeUI.setInput("2");
@@ -47,6 +50,7 @@ class WitchCottageTest {
     }
 
     @Test
+    @DisplayName("Player turns at the door. Health is not affected.")
     void enterRoomAndTurnAtTheDoor() {
         int fakePlayerInitialHealth = fakePlayer.getHealth();
         fakeUI.setInput("3");
@@ -56,11 +60,12 @@ class WitchCottageTest {
     }
 
     @Test
+    @DisplayName("Player enters invalid input and is attacked. Health decreases.")
     void enterRoomAndChoseWrongInput() {
         int fakePlayerInitialHealth = fakePlayer.getHealth();
         fakeUI.setInput("x");
         witchCottage.enterRoom(fakePlayer, fakeUI);
-        Assertions.assertTrue(fakePlayer.getHealth() < fakePlayerInitialHealth);
+        Assertions.assertEquals(fakePlayer.getHealth(), (fakePlayerInitialHealth - witch.getStrength()));
 
 
     }
