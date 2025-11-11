@@ -66,8 +66,6 @@ class WitchCottageTest {
         fakeUI.setInput("x");
         witchCottage.enterRoom(fakePlayer, fakeUI);
         Assertions.assertEquals(fakePlayer.getHealth(), (fakePlayerInitialHealth - witch.getStrength()));
-
-
     }
 
     @Test

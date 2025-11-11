@@ -2,6 +2,7 @@ package se.sprinto.hakan.adventuregame.model;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import se.sprinto.hakan.adventuregame.model.characters.Enemy;
 import se.sprinto.hakan.adventuregame.model.characters.Player;
@@ -20,11 +21,10 @@ class PlayerTest {
                 .strength(10)
                 .build();
         this.enemy = new Enemy("Vätte", 20, 0, 5);
-
-
     }
 
     @Test
+    @DisplayName("Attacklogic. Enemy's health is decreased with the player's strength.")
     void attack() {
         int enemyInitialHealth = enemy.getHealth();
         player.attack(enemy);

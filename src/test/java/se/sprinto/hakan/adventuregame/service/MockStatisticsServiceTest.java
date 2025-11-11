@@ -50,7 +50,7 @@ class MockStatisticsServiceTest {
     }
 
     @Test
-    @DisplayName("Method getSortedStatistics() returns unsorted list.")
+    @DisplayName("Method getSortedStatistics() returns sorted list.")
     void getSortedStatistics() {
         Mockito.when(fileStatisticsDao.loadAll()).thenReturn(testStatistics);
         List<Statistics> mockStats = statisticsService.getSortedStatistics();
